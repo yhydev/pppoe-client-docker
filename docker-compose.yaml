@@ -2,5 +2,14 @@ version: '3.3'
 services:
  pppoe-client:
    build: .
+   privileged: true
+   cap_add:
+   - NET_ADMIN
+   pid: 'host'
+   volumes:
+   - /etc/ppp:/etc/pppp
+   - /dev:/dev
+   - /usr/bin/poff:/usr/bin/poff
+   - /usr/bin/pon:/usr/bin/pon
    ports:
    - 8080:80
